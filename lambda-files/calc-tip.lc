@@ -1,0 +1,1 @@
+(println ((/ subtotal => (* (* subtotal 1.08) 0.2)) 100))
