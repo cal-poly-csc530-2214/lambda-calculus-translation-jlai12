@@ -4,7 +4,7 @@ import {LambdaExpression} from './LambdaExpression';
 import {InvocationExpression} from './InvocationExpression';
 import {AddExpression} from './AddExpression';
 import {MultExpression} from './MultExpression';
-import {ConditionalExpression} from './ConditionalExpression';
+import {TernaryExpression} from './TernaryExpression';
 import {PrintExpression} from './PrintExpression';
 import {ExpressionVisitor} from './ExpressionVisitor';
 
@@ -33,14 +33,14 @@ export class AstToJavascriptVisitor implements ExpressionVisitor<string> {
     return `${left.accept(this)} * ${right.accept(this)}`;
   }
 
-  visitConditionalExpression({
+  visitTernaryExpression({
     condition,
     consequent,
     alternative,
-  }: ConditionalExpression): string {
-    return `if (${condition.accept(this)} <= 0) ${consequent.accept(
+  }: TernaryExpression): string {
+    return `${condition.accept(this)} <= 0 ? ${consequent.accept(
       this
-    )} else ${alternative.accept(this)}`;
+    )} : ${alternative.accept(this)}`;
   }
 
   visitPrintExpression({argument}: PrintExpression): string {

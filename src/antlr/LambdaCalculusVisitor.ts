@@ -9,7 +9,7 @@ import { LambdaExprContext } from "./LambdaCalculusParser";
 import { InvocationExprContext } from "./LambdaCalculusParser";
 import { AddExprContext } from "./LambdaCalculusParser";
 import { MultExprContext } from "./LambdaCalculusParser";
-import { ConditionalExprContext } from "./LambdaCalculusParser";
+import { TernaryExprContext } from "./LambdaCalculusParser";
 import { PrintExprContext } from "./LambdaCalculusParser";
 import { ExpressionContext } from "./LambdaCalculusParser";
 
@@ -71,12 +71,12 @@ export interface LambdaCalculusVisitor<Result> extends ParseTreeVisitor<Result> 
 	visitMultExpr?: (ctx: MultExprContext) => Result;
 
 	/**
-	 * Visit a parse tree produced by the `ConditionalExpr`
+	 * Visit a parse tree produced by the `TernaryExpr`
 	 * labeled alternative in `LambdaCalculusParser.expression`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	visitConditionalExpr?: (ctx: ConditionalExprContext) => Result;
+	visitTernaryExpr?: (ctx: TernaryExprContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by the `PrintExpr`

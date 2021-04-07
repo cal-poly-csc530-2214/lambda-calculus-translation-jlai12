@@ -6,7 +6,7 @@ import {Expression} from '../../src/ast/Expression';
 import {InvocationExpression} from '../../src/ast/InvocationExpression';
 import {AddExpression} from '../../src/ast/AddExpression';
 import {MultExpression} from '../../src/ast/MultExpression';
-import {ConditionalExpression} from '../../src/ast/ConditionalExpression';
+import {TernaryExpression} from '../../src/ast/TernaryExpression';
 import {PrintExpression} from '../../src/ast/PrintExpression';
 
 describe('AstToJavascriptVisitor', () => {
@@ -99,7 +99,7 @@ describe('AstToJavascriptVisitor', () => {
     expect(mockRight.accept).toBeCalledWith(jsConverter);
   });
 
-  it('converts conditional expressions', () => {
+  it('converts ternary expressions', () => {
     const jsConverter = new AstToJavascriptVisitor();
 
     const mockTest: Expression = {
@@ -112,13 +112,13 @@ describe('AstToJavascriptVisitor', () => {
       accept: jest.fn().mockImplementation(() => '[ELSE EXPRESSION]'),
     };
 
-    const conditional: ConditionalExpression = new ConditionalExpression(
+    const conditional: TernaryExpression = new TernaryExpression(
       mockTest,
       mockThen,
       mockElse
     );
-    expect(jsConverter.visitConditionalExpression(conditional)).toEqual(
-      'if ([TEST EXPRESSION] <= 0) [THEN EXPRESSION] else [ELSE EXPRESSION]'
+    expect(jsConverter.visitTernaryExpression(conditional)).toEqual(
+      '[TEST EXPRESSION] <= 0 ? [THEN EXPRESSION] : [ELSE EXPRESSION]'
     );
     expect(mockTest.accept).toBeCalledWith(jsConverter);
     expect(mockThen.accept).toBeCalledWith(jsConverter);

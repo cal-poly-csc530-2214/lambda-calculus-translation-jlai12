@@ -7,7 +7,7 @@ expression
   | '(' func=expression arg=expression ')'                        # InvocationExpr
   | '(+' left=expression right=expression ')'                     # AddExpr
   | '(*' left=expression right=expression ')'                     # MultExpr
-  | '(ifleq0' test=expression then=expression else=expression ')' # ConditionalExpr
+  | '(ifleq0' test=expression then=expression else=expression ')' # TernaryExpr
   | '(println' arg=expression ')'                                 # PrintExpr
   ;
 

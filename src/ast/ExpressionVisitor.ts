@@ -4,7 +4,7 @@ import {LambdaExpression} from './LambdaExpression';
 import {InvocationExpression} from './InvocationExpression';
 import {AddExpression} from './AddExpression';
 import {MultExpression} from './MultExpression';
-import {ConditionalExpression} from './ConditionalExpression';
+import {TernaryExpression} from './TernaryExpression';
 import {PrintExpression} from './PrintExpression';
 
 export interface ExpressionVisitor<T> {
@@ -14,6 +14,6 @@ export interface ExpressionVisitor<T> {
   visitInvocationExpression(expresion: InvocationExpression): T;
   visitAddExpression(expresion: AddExpression): T;
   visitMultExpression(expresion: MultExpression): T;
-  visitConditionalExpression(expresion: ConditionalExpression): T;
+  visitTernaryExpression(expresion: TernaryExpression): T;
   visitPrintExpression(expresion: PrintExpression): T;
 }

@@ -162,17 +162,17 @@ export class LambdaCalculusParser extends Parser {
 				}
 				break;
 			case LambdaCalculusParser.T__6:
-				_localctx = new ConditionalExprContext(_localctx);
+				_localctx = new TernaryExprContext(_localctx);
 				this.enterOuterAlt(_localctx, 7);
 				{
 				this.state = 25;
 				this.match(LambdaCalculusParser.T__6);
 				this.state = 26;
-				(_localctx as ConditionalExprContext)._test = this.expression();
+				(_localctx as TernaryExprContext)._test = this.expression();
 				this.state = 27;
-				(_localctx as ConditionalExprContext)._then = this.expression();
+				(_localctx as TernaryExprContext)._then = this.expression();
 				this.state = 28;
-				(_localctx as ConditionalExprContext)._else = this.expression();
+				(_localctx as TernaryExprContext)._else = this.expression();
 				this.state = 29;
 				this.match(LambdaCalculusParser.T__2);
 				}
@@ -446,7 +446,7 @@ export class MultExprContext extends ExpressionContext {
 		}
 	}
 }
-export class ConditionalExprContext extends ExpressionContext {
+export class TernaryExprContext extends ExpressionContext {
 	public _test!: ExpressionContext;
 	public _then!: ExpressionContext;
 	public _else!: ExpressionContext;
@@ -465,20 +465,20 @@ export class ConditionalExprContext extends ExpressionContext {
 	}
 	// @Override
 	public enterRule(listener: LambdaCalculusListener): void {
-		if (listener.enterConditionalExpr) {
-			listener.enterConditionalExpr(this);
+		if (listener.enterTernaryExpr) {
+			listener.enterTernaryExpr(this);
 		}
 	}
 	// @Override
 	public exitRule(listener: LambdaCalculusListener): void {
-		if (listener.exitConditionalExpr) {
-			listener.exitConditionalExpr(this);
+		if (listener.exitTernaryExpr) {
+			listener.exitTernaryExpr(this);
 		}
 	}
 	// @Override
 	public accept<Result>(visitor: LambdaCalculusVisitor<Result>): Result {
-		if (visitor.visitConditionalExpr) {
-			return visitor.visitConditionalExpr(this);
+		if (visitor.visitTernaryExpr) {
+			return visitor.visitTernaryExpr(this);
 		} else {
 			return visitor.visitChildren(this);
 		}

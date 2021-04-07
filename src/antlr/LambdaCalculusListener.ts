@@ -9,7 +9,7 @@ import { LambdaExprContext } from "./LambdaCalculusParser";
 import { InvocationExprContext } from "./LambdaCalculusParser";
 import { AddExprContext } from "./LambdaCalculusParser";
 import { MultExprContext } from "./LambdaCalculusParser";
-import { ConditionalExprContext } from "./LambdaCalculusParser";
+import { TernaryExprContext } from "./LambdaCalculusParser";
 import { PrintExprContext } from "./LambdaCalculusParser";
 import { ExpressionContext } from "./LambdaCalculusParser";
 
@@ -98,17 +98,17 @@ export interface LambdaCalculusListener extends ParseTreeListener {
 	exitMultExpr?: (ctx: MultExprContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `ConditionalExpr`
+	 * Enter a parse tree produced by the `TernaryExpr`
 	 * labeled alternative in `LambdaCalculusParser.expression`.
 	 * @param ctx the parse tree
 	 */
-	enterConditionalExpr?: (ctx: ConditionalExprContext) => void;
+	enterTernaryExpr?: (ctx: TernaryExprContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ConditionalExpr`
+	 * Exit a parse tree produced by the `TernaryExpr`
 	 * labeled alternative in `LambdaCalculusParser.expression`.
 	 * @param ctx the parse tree
 	 */
-	exitConditionalExpr?: (ctx: ConditionalExprContext) => void;
+	exitTernaryExpr?: (ctx: TernaryExprContext) => void;
 
 	/**
 	 * Enter a parse tree produced by the `PrintExpr`

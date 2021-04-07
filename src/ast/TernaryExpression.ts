@@ -1,7 +1,7 @@
 import {ExpressionVisitor} from './ExpressionVisitor';
 import {Expression} from './Expression';
 
-export class ConditionalExpression implements Expression {
+export class TernaryExpression implements Expression {
   condition: Expression;
   consequent: Expression;
   alternative: Expression;
@@ -17,6 +17,6 @@ export class ConditionalExpression implements Expression {
   }
 
   accept<T>(visitor: ExpressionVisitor<T>): T {
-    return visitor.visitConditionalExpression(this);
+    return visitor.visitTernaryExpression(this);
   }
 }
