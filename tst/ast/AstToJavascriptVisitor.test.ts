@@ -57,7 +57,7 @@ describe('AstToJavascriptVisitor', () => {
       mockArgument
     );
     expect(jsConverter.visitInvocationExpression(invocation)).toEqual(
-      '[FUNC EXPRESSION]([ARG EXPRESSION])'
+      '([FUNC EXPRESSION]([ARG EXPRESSION]))'
     );
     expect(mockFunction.accept).toBeCalledWith(jsConverter);
     expect(mockArgument.accept).toBeCalledWith(jsConverter);
@@ -75,7 +75,7 @@ describe('AstToJavascriptVisitor', () => {
 
     const add: AddExpression = new AddExpression(mockLeft, mockRight);
     expect(jsConverter.visitAddExpression(add)).toEqual(
-      '[LEFT EXPRESSION] + [RIGHT EXPRESSION]'
+      '([LEFT EXPRESSION] + [RIGHT EXPRESSION])'
     );
     expect(mockLeft.accept).toBeCalledWith(jsConverter);
     expect(mockRight.accept).toBeCalledWith(jsConverter);
@@ -93,7 +93,7 @@ describe('AstToJavascriptVisitor', () => {
 
     const add: MultExpression = new MultExpression(mockLeft, mockRight);
     expect(jsConverter.visitMultExpression(add)).toEqual(
-      '[LEFT EXPRESSION] * [RIGHT EXPRESSION]'
+      '([LEFT EXPRESSION] * [RIGHT EXPRESSION])'
     );
     expect(mockLeft.accept).toBeCalledWith(jsConverter);
     expect(mockRight.accept).toBeCalledWith(jsConverter);
@@ -118,7 +118,7 @@ describe('AstToJavascriptVisitor', () => {
       mockElse
     );
     expect(jsConverter.visitTernaryExpression(conditional)).toEqual(
-      '[TEST EXPRESSION] <= 0 ? [THEN EXPRESSION] : [ELSE EXPRESSION]'
+      '([TEST EXPRESSION] <= 0 ? [THEN EXPRESSION] : [ELSE EXPRESSION])'
     );
     expect(mockTest.accept).toBeCalledWith(jsConverter);
     expect(mockThen.accept).toBeCalledWith(jsConverter);

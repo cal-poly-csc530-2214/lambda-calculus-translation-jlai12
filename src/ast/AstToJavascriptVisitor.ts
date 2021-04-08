@@ -22,15 +22,15 @@ export class AstToJavascriptVisitor implements ExpressionVisitor<string> {
   }
 
   visitInvocationExpression({func, argument}: InvocationExpression): string {
-    return `${func.accept(this)}(${argument.accept(this)})`;
+    return `(${func.accept(this)}(${argument.accept(this)}))`;
   }
 
   visitAddExpression({left, right}: AddExpression): string {
-    return `${left.accept(this)} + ${right.accept(this)}`;
+    return `(${left.accept(this)} + ${right.accept(this)})`;
   }
 
   visitMultExpression({left, right}: MultExpression): string {
-    return `${left.accept(this)} * ${right.accept(this)}`;
+    return `(${left.accept(this)} * ${right.accept(this)})`;
   }
 
   visitTernaryExpression({
@@ -38,9 +38,9 @@ export class AstToJavascriptVisitor implements ExpressionVisitor<string> {
     consequent,
     alternative,
   }: TernaryExpression): string {
-    return `${condition.accept(this)} <= 0 ? ${consequent.accept(
+    return `(${condition.accept(this)} <= 0 ? ${consequent.accept(
       this
-    )} : ${alternative.accept(this)}`;
+    )} : ${alternative.accept(this)})`;
   }
 
   visitPrintExpression({argument}: PrintExpression): string {
