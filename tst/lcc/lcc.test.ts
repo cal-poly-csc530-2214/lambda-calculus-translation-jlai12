@@ -22,4 +22,26 @@ describe('test lcc', () => {
     );
     consoleSpy.mockRestore();
   });
+
+  it('converts factorial.lc to python', async () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    // (println (* 5 (* 4 (* 3 2))))
+    const factorial = 'tst/test-data/factorial.lc';
+    await lcc(factorial, undefined, {language: 'python'});
+    expect(console.log).toBeCalledWith('print((5 * (4 * (3 * 2))))');
+    consoleSpy.mockRestore();
+  });
+
+  it('converts tip.lc to python', async () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    // (println ((/ subtotal => (* (* subtotal 1.08) 0.2)) 100))
+    const tip = 'tst/test-data/tip.lc';
+    await lcc(tip, undefined, {language: 'python'});
+    expect(console.log).toBeCalledWith(
+      'print(((lambda subtotal: ((subtotal * 1.08) * 0.2))(100)))'
+    );
+    consoleSpy.mockRestore();
+  });
 });

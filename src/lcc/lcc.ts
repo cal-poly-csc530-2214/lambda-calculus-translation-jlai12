@@ -4,14 +4,14 @@ import {LambdaCalculusParser} from '../antlr/LambdaCalculusParser';
 import {readFile, writeFile} from 'fs/promises';
 import {LambdaToAstVisitor} from '../antlr/LambdaToAstVisitor';
 import {AstToJavascriptVisitor} from '../ast/AstToJavascriptVisitor';
+import {AstToPythonVisitor} from '../ast/AstToPythonVisitor';
 
 const lcc = async (
   file: string,
   output?: string,
   {language} = {language: 'javascript'}
 ) => {
-  // TODO - add support for python
-  if (language !== 'javascript') {
+  if (language !== 'javascript' && language !== 'python') {
     console.error(`${language} not yet supported`);
     return;
   }
@@ -26,8 +26,10 @@ const lcc = async (
   const astConverter = new LambdaToAstVisitor();
   const ast = expression.accept(astConverter);
 
-  // TODO - Add support for python
-  const converter = new AstToJavascriptVisitor();
+  const converter =
+    language === 'javascript'
+      ? new AstToJavascriptVisitor()
+      : new AstToPythonVisitor();
 
   const result = ast.accept(converter);
   if (output) {
